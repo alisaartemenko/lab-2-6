@@ -11,6 +11,7 @@ private:
     string name;
     int health;
     string ranking;
+    static int count;
 
 public:
 
@@ -25,6 +26,9 @@ public:
     void takeDamage(int damage);
     void showStats();
     void updateStats(string name, int health);
+    static int getCount() {
+        return count;
+    }
 };
 
 #endif

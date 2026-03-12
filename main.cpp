@@ -13,6 +13,9 @@ int main() {
     Character hero2("Silver", 500, "Beginner");
     cout << "---" << endl;
 
+    cout << "Current heroes: " << Character::getCount() << endl;
+    cout << "---" << endl;
+
     Weapon stick("Stick", 10, 5, false);
     Weapon sword("FireArm", 100);
     cout << "---" << endl;
