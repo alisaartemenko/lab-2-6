@@ -24,5 +24,10 @@ int main() {
     Character clone = hero;
     Character newHero = move(hero);
 
+    cout << "--- Testing 'this' pointer ---" << endl;
+    hero.updateStats("King Aragorn", 200);
+    hero.showStats();
+    cout << "---" << endl;
+
     return 0;
 }

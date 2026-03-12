@@ -24,6 +24,7 @@ public:
 
     void takeDamage(int damage);
     void showStats();
+    void updateStats(string name, int health);
 };
 
 #endif

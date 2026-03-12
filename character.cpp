@@ -34,5 +34,13 @@ void Character::takeDamage(int damage) {
 }
 
 void Character::showStats () {
+    cout << "Name: " << name << endl;
     cout << "Health: " << health << endl;
+}
+
+void Character::updateStats(string name, int health) {
+    this->name = name;
+    this->health = health;
+
+    cout << "Hero updated at memory address: " << this << endl;
 }
