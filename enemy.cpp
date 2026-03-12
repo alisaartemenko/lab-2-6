@@ -11,3 +11,23 @@ Enemy::~Enemy () {
 void Enemy::attackEnemy (int damageDone) {
     hp -= damageDone;
 }
+
+bool Enemy::operator>(const Enemy& other) const {
+    return this->hp > other.hp;
+}
+
+Enemy Enemy::operator-() const {
+    cout << "Curse applied to " << type << "! Damage halved!" << endl;
+    return Enemy(this->type, this->damage / 2, this->hp);
+}
+
+ostream& operator<<(ostream& os, const Enemy& e) {
+    os << "ENEMY STATUS [" << e.type << " | HP: " << e.hp << " | DMG: " << e.damage << "]";
+    return os;
+}
+
+istream& operator>>(istream& is, Enemy& e) {
+    cout << "Enter enemy type, damage and hp: ";
+    is >> e.type >> e.damage >> e.hp;
+    return is;
+}

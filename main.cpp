@@ -21,7 +21,7 @@ int main() {
     cout << "---" << endl;
 
     Enemy defaultEnemy;
-    Enemy dragon("Deathly Claw", 500, 1000);
+    Enemy dragonEnemy("Deathly Claw", 500, 1000);
     cout << "---" << endl;
 
     Character clone = hero;
@@ -42,6 +42,25 @@ int main() {
 
     npc.showStats();
     //npc.updateStats("Villain", 10);
+
+    Enemy dragon("Dragon", 100, 500);
+    Enemy goblin("Goblin", 20, 80);
+
+    cout << "--- Testing Operators ---" << endl;
+
+    cout << "Original dragon: " << dragon << endl;
+    cout << "Original goblin: " << goblin << endl;
+    cout << "---" << endl;
+    if (dragon > goblin) {
+        cout << "Result: Dragon is tougher!" << endl;
+    }
+    cout << "---" << endl;
+    Enemy weakDragon = -dragon;
+    cout << "Weakened: " << weakDragon << endl;
+    cout << "---" << endl;
+    Enemy customEnemy;
+    cin >> customEnemy;
+    cout << "You created: " << customEnemy << endl;
 
     return 0;
 }

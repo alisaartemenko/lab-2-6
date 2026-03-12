@@ -17,6 +17,13 @@ public:
     ~Enemy();
 
     void attackEnemy (int damageDone);
+
+    bool operator>(const Enemy& other) const;
+
+    Enemy operator-() const;
+
+    friend ostream& operator<<(ostream& os, const Enemy& e);
+    friend istream& operator>>(istream& is, Enemy& e);
 };
 
 #endif //LAB_2_6_ENEMY_H
