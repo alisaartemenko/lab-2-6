@@ -39,9 +39,8 @@ void Character::takeDamage(int damage) {
     health -= damage;
 }
 
-void Character::showStats () {
-    cout << "Name: " << name << endl;
-    cout << "Health: " << health << endl;
+void Character::showStats() const {
+    cout << "Name: " << name << " | Health: " << health << " | Rank: " << ranking << endl;
 }
 
 void Character::updateStats(string name, int health) {

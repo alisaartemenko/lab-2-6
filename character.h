@@ -24,7 +24,7 @@ public:
     ~Character();
 
     void takeDamage(int damage);
-    void showStats();
+    void showStats() const;
     void updateStats(string name, int health);
     static int getCount() {
         return count;

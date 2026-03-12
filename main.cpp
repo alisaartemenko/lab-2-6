@@ -32,5 +32,16 @@ int main() {
     hero.showStats();
     cout << "---" << endl;
 
+    Character heroAgain("Willson", 100, "Warrior");
+    heroAgain.updateStats("King Willson", 150);
+    heroAgain.showStats();
+    cout << "---" << endl;
+
+    const Character npc("Old Man", 50, "Villager");
+    cout << "--- Testing const object ---" << endl;
+
+    npc.showStats();
+    //npc.updateStats("Villain", 10);
+
     return 0;
 }
