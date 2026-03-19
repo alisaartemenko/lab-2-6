@@ -9,4 +9,8 @@ add_executable(untitled1 main.cpp
         enemy.cpp
         enemy.h
         weapon.cpp
-        weapon.h)
+        weapon.h
+        Boss.cpp
+        Boss.h
+        Combatant.cpp
+        Combatant.h)
