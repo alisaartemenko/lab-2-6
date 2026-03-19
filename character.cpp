@@ -1,7 +1,6 @@
-
-
 #include "Character.h"
 #include <utility>
+#include "combatant.h"
 
 using namespace std;
 
@@ -64,5 +63,17 @@ Character& Character::operator=(const Character& other) {
     this->weapon = other.weapon;
 
     cout << "Copy assignment operator called for " << name << endl;
+    return *this;
+}
+
+Character& Character::operator=(Character&& other) noexcept {
+    cout << "Move assignment operator called for " << other.name << endl;
+    if (this == &other) return *this;
+
+    Combatant::operator=(std::move(other));
+
+    this->ranking = std::move(other.ranking);
+    this->weapon = std::move(other.weapon);
+
     return *this;
 }

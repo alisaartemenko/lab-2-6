@@ -20,9 +20,11 @@ public:
     Character(string n = "Traveler");
 
     Character(const Character& other);
-            Character(Character&& other) noexcept;
+    Character(Character&& other) noexcept;
+    Character& operator=(const Character& other);
+    Character& operator=(Character&& other) noexcept;
 
-    ~Character();
+    ~Character() override;
 
     void takeDamage(int damage);
     void showStats() const;
@@ -30,9 +32,6 @@ public:
     static int getCount() {
         return count;
     }
-
-    Character& operator=(const Character& other);
-    Character& operator=(Character&& other) noexcept;
 };
 
 #endif

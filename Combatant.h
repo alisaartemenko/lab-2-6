@@ -19,6 +19,27 @@ public:
 
     virtual ~Combatant();
 
+    Combatant(const Combatant& other) = default;
+    Combatant(Combatant&& other) noexcept = default;
+
+    Combatant& operator=(const Combatant& other) {
+        if (this != &other) {
+            name = other.name;
+            health = other.health;
+        }
+        return *this;
+    }
+
+    Combatant& operator=(Combatant&& other) noexcept {
+        if (this != &other) {
+            name = std::move(other.name);
+            health = other.health;
+        }
+        return *this;
+    }
+
+
+
 };
 
 
