@@ -3,6 +3,8 @@
 #include "character.h"
 #include "weapon.h"
 #include "enemy.h"
+#include "Boss.h"
+#include "Combatant.h"
 
 using namespace std;
 
@@ -25,7 +27,6 @@ int main() {
     cout << "---" << endl;
 
     Character clone = hero;
-    Character newHero = move(hero);
 
     cout << "--- Testing 'this' pointer ---" << endl;
     hero.updateStats("King Aragorn", 200);
@@ -61,6 +62,29 @@ int main() {
     Enemy customEnemy;
     cin >> customEnemy;
     cout << "You created: " << customEnemy << endl;
+
+    cout << "!!! Testing Inheritance Chain !!!" << endl;
+    Boss sauron("Sauron", 300, 10000, "Final Phase", true);
+
+    cout << "!!! Testing (Copy/Move/Assignment) !!!" << endl;
+
+    Character a("Warrior_A", 100, "Veteran");
+    Character b("Warrior_B", 80, "Rookie");
+
+    cout << "1. Testing Copy Assignment:" << endl;
+    a = b;
+    a.showStats();
+
+    cout << "2. Testing Move Assignment:" << endl;
+    Character c("Warrior_C", 150, "Elite");
+    a = std::move(c);
+    a.showStats();
+
+    cout << "3. Testing Copy Constructor:" << endl;
+    Character d = a;
+    d.showStats();
+
+    cout << "--- End of Testing ---" << endl;
 
     return 0;
 }
