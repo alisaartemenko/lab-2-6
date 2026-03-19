@@ -3,15 +3,16 @@
 
 #include <iostream>
 #include <string>
+#include "Combatant.h"
+#include "weapon.h"
 
 using namespace std;
 
-class Character {
+class Character : public Combatant {
 private:
-    string name;
-    int health;
     string ranking;
     static int count;
+    Weapon weapon;
 
 public:
 
@@ -19,7 +20,7 @@ public:
     Character(string n = "Traveler");
 
     Character(const Character& other);
-    Character(Character&& other) noexcept;
+            Character(Character&& other) noexcept;
 
     ~Character();
 
@@ -29,6 +30,9 @@ public:
     static int getCount() {
         return count;
     }
+
+    Character& operator=(const Character& other);
+    Character& operator=(Character&& other) noexcept;
 };
 
 #endif

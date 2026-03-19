@@ -3,14 +3,14 @@
 
 #include <iostream>
 #include <string>
+#include "Combatant.h"
 
 using namespace std;
 
-class Enemy {
-private:
+class Enemy : public Combatant {
+protected:
     string type;
     int damage;
-    int hp;
 public:
     Enemy(string t = "Goblin", int d = 50, int h = 100);
 

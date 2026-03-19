@@ -1,3 +1,5 @@
+
+
 #include "Character.h"
 #include <utility>
 
@@ -6,13 +8,17 @@ using namespace std;
 int Character::count = 0;
 
 Character::Character(const Character& other)
-    : name(other.name + " (Clone)"), health(other.health), ranking(other.ranking) {
+    : Combatant(other),
+    ranking(other.ranking),
+    weapon(other.weapon){
     cout << "Copy constructor called for " << name << endl;
     count++;
 }
 
 Character::Character(Character&& other) noexcept
-    : name(move(other.name)), health(other.health), ranking(move(other.ranking)) {
+    : Combatant(move(other)),
+    ranking(move(other.ranking)),
+    weapon(std::move(other.weapon)) {
 
     count++;
     other.health = 0;
@@ -21,7 +27,7 @@ Character::Character(Character&& other) noexcept
     cout << "Move constructor called. Original object is now empty." << endl;
 }
 
-Character::Character(string n, int h, string r) : name(n), health(h), ranking(r) {
+Character::Character(string n, int h, string r) : Combatant(n, h), ranking(r), weapon("Sword", 10) {
     cout << "Character " << name << " created" << endl;
     count++;
 }
@@ -34,13 +40,13 @@ Character::~Character() {
 }
 
 
-
 void Character::takeDamage(int damage) {
     health -= damage;
 }
 
 void Character::showStats() const {
-    cout << "Name: " << name << " | Health: " << health << " | Rank: " << ranking << endl;
+    Combatant::showStats();
+    cout << " | Rank: " << ranking << endl;
 }
 
 void Character::updateStats(string name, int health) {
@@ -48,4 +54,15 @@ void Character::updateStats(string name, int health) {
     this->health = health;
 
     cout << "Hero updated at memory address: " << this << endl;
+}
+
+Character& Character::operator=(const Character& other) {
+    if (this == &other) return *this;
+
+    Combatant::operator=(other);
+    this->ranking = other.ranking;
+    this->weapon = other.weapon;
+
+    cout << "Copy assignment operator called for " << name << endl;
+    return *this;
 }
