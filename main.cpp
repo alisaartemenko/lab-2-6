@@ -8,6 +8,12 @@
 
 using namespace std;
 
+void showFullCombatantInfo(Combatant& unit) {
+    cout << ">>> Full information:" << endl;
+    unit.showStats();
+    unit.shoutBattleCry();
+}
+
 int main() {
 
  /*   Character hero("Aragorn");
@@ -86,17 +92,17 @@ int main() {
 
     cout << "--- End of Testing ---" << endl; */
 
-    cout << "Problem (Static Method Binding)" << endl;
+    cout << ">>> Problem (Static Method Binding)" << endl;
     Combatant* newCombatant = new Character();
     newCombatant->takeDamage(100);
     delete newCombatant;
 
-    cout << "Virtual methods" << endl;
-    cout << "First: Show Stats"<< endl;
+    cout << ">>> Virtual methods" << endl;
+    cout << ">>> First: Show Stats"<< endl;
     Combatant* newCharacter = new Character("Victor", 2000, "Warrior");
     newCharacter->showStats();
 
-    cout << "Second: Take Damage"<< endl;
+    cout << ">>> Second: Take Damage"<< endl;
     Combatant* secondCharacter = new Character("Victor", 2000, "Warrior");
     secondCharacter->takeDamage(100);
     secondCharacter->showStats();
@@ -104,11 +110,18 @@ int main() {
     enemy->takeDamage(500);
     enemy->showStats();
 
-    cout << "Third: Shout Battle Cry" << endl;
+    cout << ">>> Third: Shout Battle Cry" << endl;
     Combatant* hero = new Character("Razor", 3000, "Knight");
     hero->shoutBattleCry();
     Combatant* secondEnemy = new Enemy("The Deathly Claw", 300, 10000);
     secondEnemy->shoutBattleCry();
+
+    cout << ">>> Base class reference" << endl;
+    Character mage("Greybeard", 10000, "Mage");
+    Enemy dragon("Drawblood", 2000, 100000);
+
+    showFullCombatantInfo(mage);
+    showFullCombatantInfo(dragon);
 
     delete hero;
     delete enemy;
@@ -116,6 +129,7 @@ int main() {
     delete newCharacter;
     delete secondCharacter;
     delete secondEnemy;
+
 
     return 0;
 }

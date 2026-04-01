@@ -33,7 +33,7 @@ public:
     static int getCount() {
         return count;
     }
-    void shoutBattleCry() override;
+    void shoutBattleCry() final;
 };
 
 #endif
