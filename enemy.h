@@ -14,9 +14,11 @@ protected:
 public:
     Enemy(string t = "Goblin", int d = 50, int h = 100);
 
-    ~Enemy();
+    virtual ~Enemy();
 
-    void attackEnemy (int damageDone);
+    void showStats() const override;
+    void takeDamage (int damage) override;
+    void shoutBattleCry() override;
 
     bool operator>(const Enemy& other) const;
 

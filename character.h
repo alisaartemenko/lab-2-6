@@ -21,17 +21,19 @@ public:
 
     Character(const Character& other);
     Character(Character&& other) noexcept;
+
     Character& operator=(const Character& other);
     Character& operator=(Character&& other) noexcept;
 
     ~Character() override;
 
-    void takeDamage(int damage);
-    void showStats() const;
+    void takeDamage(int damage) override;
+    void showStats() const override;
     void updateStats(string name, int health);
     static int getCount() {
         return count;
     }
+    void shoutBattleCry() override;
 };
 
 #endif
