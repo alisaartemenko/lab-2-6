@@ -11,7 +11,8 @@ Combatant::~Combatant() {
 void Combatant::takeDamage(int damage) {
     health -= damage;
     if (health < 0) health = 0;
-    cout << name << " took " << damage << " damage. Health now: " << health << endl;
+    //cout << name << " took " << damage << " damage. Health now: " << health << endl;
+    cout << "Some combatant got damaged." << endl;
 }
 
 void Combatant::showStats() const {

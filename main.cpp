@@ -10,7 +10,7 @@ using namespace std;
 
 int main() {
 
-    Character hero("Aragorn");
+ /*   Character hero("Aragorn");
     Character defaultHero;
     Character hero2("Silver", 500, "Beginner");
     cout << "---" << endl;
@@ -84,7 +84,12 @@ int main() {
     Character d = a;
     d.showStats();
 
-    cout << "--- End of Testing ---" << endl;
+    cout << "--- End of Testing ---" << endl; */
+
+    cout << "Problem (Static Method Binding)" << endl;
+    Combatant* newCombatant = new Character();
+    newCombatant->takeDamage(100);
+    delete newCombatant;
 
     return 0;
 }

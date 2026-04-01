@@ -41,6 +41,7 @@ Character::~Character() {
 
 void Character::takeDamage(int damage) {
     health -= damage;
+    cout<< "Ow! " << name << " got damage = " << damage << endl;
 }
 
 void Character::showStats() const {
