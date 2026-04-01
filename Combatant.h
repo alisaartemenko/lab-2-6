@@ -13,11 +13,9 @@ protected:
 public:
     Combatant(string n, int h);
 
-    void takeDamage(int dmg);
-
+    virtual void takeDamage(int dmg);
     virtual void showStats() const;
-
-    virtual ~Combatant();
+    virtual void shoutBattleCry();
 
     Combatant(const Combatant& other) = default;
     Combatant(Combatant&& other) noexcept = default;
@@ -37,6 +35,8 @@ public:
         }
         return *this;
     }
+
+    virtual ~Combatant();
 
 
 

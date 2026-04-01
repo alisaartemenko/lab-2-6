@@ -18,3 +18,7 @@ void Combatant::takeDamage(int damage) {
 void Combatant::showStats() const {
     cout << "Name: " << name << " | HP: " << health << endl;
 }
+
+void Combatant::shoutBattleCry() {
+    cout << "The victory is mine!" << endl;
+}
