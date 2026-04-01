@@ -5,6 +5,8 @@
 #include "enemy.h"
 #include "Boss.h"
 #include "Combatant.h"
+#include "aSpellcaster.h"
+#include "magicTrap.h"
 
 using namespace std;
 
@@ -122,6 +124,32 @@ int main() {
 
     showFullCombatantInfo(mage);
     showFullCombatantInfo(dragon);
+
+    cout << ">>> Pure Virtual Function" << endl;
+
+    Combatant* npc[2];
+    npc[0] = new Character("Milly", 3000, "Willager");
+    npc[1] = new Enemy("The Helluva", 300, 10000);
+
+    for (int i = 0; i < 2; i++) {
+        npc[i]->uniqueTrait();
+    }
+    for (int i = 0; i < 2; i++) {
+        delete npc[i];
+    }
+
+    cout << ">>> Interface Demonstration" << endl;
+    aSpellcaster* casters[2];
+    casters[0] = new Character("Ray", 500, "Young Mage");
+    casters[1] = new magicTrap();
+
+    for (int i = 0; i < 2; i++) {
+        casters[i]->castSpell();
+    }
+
+    for (int i = 0; i < 2; i++) {
+        delete casters[i];
+    }
 
     delete hero;
     delete enemy;

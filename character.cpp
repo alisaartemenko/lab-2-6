@@ -1,6 +1,7 @@
 #include "Character.h"
 #include <utility>
 #include "combatant.h"
+#include "aSpellcaster.h"
 
 using namespace std;
 
@@ -58,6 +59,14 @@ void Character::updateStats(string name, int health) {
     this->health = health;
 
     cout << "Hero updated at memory address: " << this << endl;
+}
+
+void Character::uniqueTrait() {
+    cout << name << " uses Special Skill: Divine Shield!" << endl;
+}
+
+void Character::castSpell() const {
+    cout << name << " casts a Fireball spell!" << endl;
 }
 
 Character& Character::operator=(const Character& other) {

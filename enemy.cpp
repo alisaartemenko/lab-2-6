@@ -25,6 +25,10 @@ void Enemy::shoutBattleCry() {
     cout<< name << " shouts: 'You are nothing but filth!'" << endl;
 }
 
+void Enemy::uniqueTrait() {
+    cout << name << " uses skill: Grand Hit!" << endl;
+}
+
 bool Enemy::operator>(const Enemy& other) const {
     return this->health > other.health;
 }

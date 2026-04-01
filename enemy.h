@@ -19,6 +19,7 @@ public:
     void showStats() const override;
     void takeDamage (int damage) override;
     void shoutBattleCry() final;
+    void uniqueTrait() override;
 
     bool operator>(const Enemy& other) const;
 

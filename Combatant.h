@@ -16,6 +16,7 @@ public:
     virtual void takeDamage(int dmg);
     virtual void showStats() const;
     virtual void shoutBattleCry();
+    virtual void uniqueTrait() = 0;
 
     Combatant(const Combatant& other) = default;
     Combatant(Combatant&& other) noexcept = default;

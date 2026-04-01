@@ -13,4 +13,8 @@ add_executable(untitled1 main.cpp
         Boss.cpp
         Boss.h
         Combatant.cpp
-        Combatant.h)
+        Combatant.h
+        aSpellcaster.cpp
+        aSpellcaster.h
+        magicTrap.cpp
+        magicTrap.h)

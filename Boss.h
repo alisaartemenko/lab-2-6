@@ -12,7 +12,7 @@ private:
     bool fightTriggered = false;
 public:
     Boss(string t, int d, int h, string p, bool tr);
-
+    ~Boss();
 };
 
 

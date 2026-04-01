@@ -5,10 +5,11 @@
 #include <string>
 #include "Combatant.h"
 #include "weapon.h"
+#include "aSpellcaster.h"
 
 using namespace std;
 
-class Character : public Combatant {
+class Character : public Combatant, public aSpellcaster {
 private:
     string ranking;
     static int count;
@@ -34,6 +35,8 @@ public:
         return count;
     }
     void shoutBattleCry() final;
+    void uniqueTrait() override;
+    void castSpell() const override;
 };
 
 #endif
