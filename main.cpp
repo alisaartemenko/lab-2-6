@@ -7,6 +7,7 @@
 #include "Combatant.h"
 #include "aSpellcaster.h"
 #include "magicTrap.h"
+#include "GameManager.h"
 
 using namespace std;
 
@@ -14,6 +15,70 @@ void showFullCombatantInfo(Combatant& unit) {
     cout << ">>> Full information:" << endl;
     unit.showStats();
     unit.shoutBattleCry();
+}
+
+void adminMenu(GameManager& gm) {
+    int choice;
+    do {
+        cout << "\n--- ADMIN PANEL ---" << endl;
+        cout << "1. Add Character\n2. Add Enemy\n3. Show All Entities\n4. Save to File\n5. View Action History\n6.Reset Data\n0. Logout" << endl;
+        cout << "Choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            string n, r; int h;
+            cout << "Name: "; cin >> n;
+            cout << "HP: "; cin >> h;
+            cout << "Rank: "; cin >> r;
+            gm.addCharacter(n, h, r);
+        } else if (choice == 2) {
+            string n; int d, h;
+            cout << "Name: "; cin >> n;
+            cout << "DMG: "; cin >> d;
+            cout << "HP: "; cin >> h;
+            gm.addEnemy(n, d, h);
+        } else if (choice == 3) {
+            gm.showAllEntities();
+        } else if (choice == 4) {
+            gm.saveData();
+            cout << "Data successfully saved!" << endl;
+        } else if (choice == 5) {
+            gm.showHistory();
+            cout << "History check: Action logged." << endl;
+        } else if (choice == 6) {
+            char confirm;
+            cout << "ARE YOU SURE? This will delete all characters and logs! (y/n): ";
+            cin >> confirm;
+            if (confirm == 'y' || confirm == 'Y') {
+                gm.resetAllData();
+            }
+        }
+    } while (choice != 0);
+}
+
+void userMenu(GameManager& gm) {
+    int choice;
+    do {
+        cout << "\n--- PLAYER MENU ---" << endl;
+        cout << "1. View World (Entities)\n2. Perform Action (Cast Spell)\n3.Reset DAta\n 0. Logout" << endl;
+        cout << "Choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            gm.showAllEntities();
+        } else if (choice == 2) {
+            cout << "Choosing a random entity to cast a spell..." << endl;
+            // Тут можна додати логіку взаємодії
+            gm.logAction("User interacted with the world.");
+        } else if (choice == 3) {
+            char confirm;
+            cout << "ARE YOU SURE? This will delete all characters and logs! (y/n): ";
+            cin >> confirm;
+            if (confirm == 'y' || confirm == 'Y') {
+                gm.resetAllData();
+            }
+        }
+    } while (choice != 0);
 }
 
 int main() {
@@ -92,7 +157,7 @@ int main() {
     Character d = a;
     d.showStats();
 
-    cout << "--- End of Testing ---" << endl; */
+    cout << "--- End of Testing ---" << endl;
 
     cout << ">>> Problem (Static Method Binding)" << endl;
     Combatant* newCombatant = new Character();
@@ -156,8 +221,32 @@ int main() {
     delete newCharacter;
     delete newCharacter;
     delete secondCharacter;
-    delete secondEnemy;
+    delete secondEnemy;*/
 
+    GameManager gm;
+
+    int role;
+    while (true) {
+        cout << "\n=== GAME LOGIN ===\n1. Admin\n2. User\n0. Exit\nChoice: ";
+        if (!(cin >> role)) break;
+
+        if (role == 1) {
+            string pass;
+            cout << "Enter Admin Password: ";
+            cin >> pass;
+            if (gm.checkAdminPassword(pass)) {
+                gm.logAction("Admin logged in.");
+                adminMenu(gm);
+            } else {
+                cout << "Access Denied!" << endl;
+            }
+        } else if (role == 2) {
+            gm.logAction("User logged in.");
+            userMenu(gm);
+        } else if (role == 0) {
+            break;
+        }
+    }
 
     return 0;
 }
