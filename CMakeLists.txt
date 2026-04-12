@@ -17,4 +17,6 @@ add_executable(untitled1 main.cpp
         aSpellcaster.cpp
         aSpellcaster.h
         magicTrap.cpp
-        magicTrap.h)
+        magicTrap.h
+        GameManager.cpp
+        GameManager.h)
