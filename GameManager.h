@@ -26,6 +26,7 @@ public:
     void addEnemy(string name, int dmg, int hp);
 
     void saveData();
+    void loadData();
 
 };
 

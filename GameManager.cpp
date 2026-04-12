@@ -5,6 +5,10 @@
 #include <fstream>
 #include <iostream>
 
+GameManager::GameManager() {
+    loadData();
+}
+
 bool GameManager::checkAdminPassword(const string& pass) {
     return pass == ADMIN_PASS;
 }
@@ -37,7 +41,26 @@ void GameManager::saveData() {
     }
 }
 
+void GameManager::loadData() {
+    try {
+        ifstream in(DATA_FILE);
+        if (!in.is_open()) throw runtime_error("Data file not found, starting fresh.");
 
+        entities.clear();
+        string type, name;
+        while (in >> type >> name) {
+            if (type == "Character") {
+                int hp; string rank; in >> hp >> rank;
+                entities.push_back(make_shared<Character>(name, hp, rank));
+            } else if (type == "Enemy") {
+                int dmg, hp; in >> dmg >> hp;
+                entities.push_back(make_shared<Enemy>(name, dmg, hp));
+            }
+        }
+    } catch (const exception& e) {
+        cout << "Notice: " << e.what() << endl;
+    }
+}
 
 
 
