@@ -12,8 +12,15 @@ class GameManager {
 private:
     vector<shared_ptr<Combatant>> entities;
     vector<string> history;
+    const string ADMIN_PASS = "admin123";
+    const string DATA_FILE = "save_data.txt";
+    const string LOG_FILE = "history.txt";
 public:
     GameManager();
+
+    bool checkAdminPassword(const string& pass);
+
+    void logAction(string action);
 };
 
 
