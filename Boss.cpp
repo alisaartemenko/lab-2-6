@@ -16,6 +16,5 @@ Boss::~Boss() {
 }
 
 string Boss::serialize() const {
-    return "Boss " + name + " " + to_string(damage) + " " + to_string(health) +
-        " " + phase + " " + (fightTriggered ? "1" : "0");
+    return "Boss " + name + " " + to_string(damage) + " " + to_string(health) + " " + phase + " " + (fightTriggered ? "1" : "0");
 }

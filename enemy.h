@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include "Combatant.h"
-#include "Boss.h"
 
 using namespace std;
 

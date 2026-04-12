@@ -4,6 +4,8 @@
 #include "Boss.h"
 #include <fstream>
 #include <iostream>
+#include <vector>
+#include <string>
 
 GameManager::GameManager() {
     loadData();
@@ -56,10 +58,59 @@ void GameManager::loadData() {
                 int dmg, hp; in >> dmg >> hp;
                 entities.push_back(make_shared<Enemy>(name, dmg, hp));
             }
+            else if (type == "Boss") {
+                int dmg, hp; string phase; bool trig;
+                in >> dmg >> hp >> phase >> trig;
+                entities.push_back(make_shared<Boss>(name, dmg, hp, phase, trig));
+            }
         }
     } catch (const exception& e) {
         cout << "Notice: " << e.what() << endl;
     }
+}
+
+void GameManager::showAllEntities() const {
+    if (entities.empty()) {
+        cout << "The world is currently empty." << endl;
+        return;
+    }
+    for (const auto& e : entities) {
+        e->showStats();
+    }
+}
+
+void GameManager::showHistory() const {
+    cout << "\n========== ACTION HISTORY ==========" << endl;
+    if (history.empty()) {
+        cout << "History is empty." << endl;
+    } else {
+        for (const auto& log : history) {
+            cout << ">> " << log << endl;
+        }
+    }
+    cout << "====================================" << endl;
+}
+
+void GameManager::resetAllData() {
+
+    entities.clear();
+    history.clear();
+
+    ofstream outEntities(DATA_FILE, ios::trunc);
+    ofstream outHistory(LOG_FILE, ios::trunc);
+
+    outEntities.close();
+    outHistory.close();
+
+    logAction("System: All data and history have been reset.");
+    cout << "All data cleared successfully!" << endl;
+}
+
+void GameManager::clearHistory() {
+    history.clear();
+    ofstream outHistory(LOG_FILE, ios::trunc);
+    outHistory.close();
+    logAction("System: History cleared.");
 }
 
 

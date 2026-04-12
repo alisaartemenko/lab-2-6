@@ -28,6 +28,12 @@ public:
     void saveData();
     void loadData();
 
+    void showAllEntities() const;
+    void showHistory() const;
+
+    void resetAllData();
+    void clearHistory();
+
 };
 
 
