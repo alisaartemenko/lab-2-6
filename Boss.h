@@ -13,7 +13,7 @@ private:
 public:
     Boss(string t, int d, int h, string p, bool tr);
     ~Boss();
+    string serialize() const override;
 };
-
 
 #endif //UNTITLED1_BOSS_H

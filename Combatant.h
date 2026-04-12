@@ -17,6 +17,7 @@ public:
     virtual void showStats() const;
     virtual void shoutBattleCry();
     virtual void uniqueTrait() = 0;
+    virtual string serialize() const = 0;
 
     Combatant(const Combatant& other) = default;
     Combatant(Combatant&& other) noexcept = default;

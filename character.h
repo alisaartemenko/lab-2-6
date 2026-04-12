@@ -37,6 +37,7 @@ public:
     void shoutBattleCry() final;
     void uniqueTrait() override;
     void castSpell() const override;
+    string serialize() const override;
 };
 
 #endif

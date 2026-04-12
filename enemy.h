@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "Combatant.h"
+#include "Boss.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ public:
     void takeDamage (int damage) override;
     void shoutBattleCry() final;
     void uniqueTrait() override;
+    string serialize() const override;
 
     bool operator>(const Enemy& other) const;
 

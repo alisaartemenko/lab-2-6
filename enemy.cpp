@@ -1,5 +1,6 @@
 #include "enemy.h"
-#include "combatant.h"
+#include "Combatant.h"
+#include <string>
 
 Enemy::Enemy(string t, int d, int h) : Combatant(t, h), damage(d) {
     cout << "Enemy type: " << name << " is lurking nearby!" << endl;
@@ -19,8 +20,6 @@ void Enemy::takeDamage (int damage) {
     cout<< "Nice! " << name << " got damage = " << damage << endl;
 }
 
-
-
 void Enemy::shoutBattleCry() {
     cout<< name << " shouts: 'You are nothing but filth!'" << endl;
 }
@@ -31,6 +30,10 @@ void Enemy::uniqueTrait() {
 
 bool Enemy::operator>(const Enemy& other) const {
     return this->health > other.health;
+}
+
+string Enemy::serialize() const {
+    return "Enemy " + name + " " + to_string(damage) + " " + to_string(health);
 }
 
 Enemy Enemy::operator-() const {

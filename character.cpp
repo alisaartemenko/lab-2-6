@@ -1,6 +1,7 @@
-#include "Character.h"
+#include "character.h"
 #include <utility>
-#include "combatant.h"
+#include "Combatant.h"
+#include <string>
 #include "aSpellcaster.h"
 
 using namespace std;
@@ -67,6 +68,10 @@ void Character::uniqueTrait() {
 
 void Character::castSpell() const {
     cout << name << " casts a Fireball spell!" << endl;
+}
+
+string Character::serialize() const {
+    return "Character " + name + " " + to_string(health) + " " + ranking;
 }
 
 Character& Character::operator=(const Character& other) {
