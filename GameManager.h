@@ -21,6 +21,12 @@ public:
     bool checkAdminPassword(const string& pass);
 
     void logAction(string action);
+
+    void addCharacter(string name, int hp, string rank);
+    void addEnemy(string name, int dmg, int hp);
+
+    void saveData();
+
 };
 
 
